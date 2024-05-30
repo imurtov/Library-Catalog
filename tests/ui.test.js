@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 const appUrl = "http://localhost:3000";
 
 
-test('Very All Books link is visible', async( { page } ) =>
+test('Verify All Books link is visible', async( { page } ) =>
     {
         //Open the application
         await page.goto(appUrl);
@@ -20,7 +20,7 @@ test('Very All Books link is visible', async( { page } ) =>
         expect(isElementVisible).toBe(true);
     });
 
-test('Very Login button is visible', async( { page } ) =>
+test('Verify Login button is visible', async( { page } ) =>
     {
         await page.goto(appUrl);
         await page.waitForSelector("nav.navbar");
@@ -29,7 +29,7 @@ test('Very Login button is visible', async( { page } ) =>
         expect(isElementVisible).toBe(true);
     });
 
-test('Very Register button is visible', async( { page } ) =>
+test('Verify Register button is visible', async( { page } ) =>
     {
         await page.goto(appUrl);
         await page.waitForSelector("nav.navbar");
@@ -38,11 +38,32 @@ test('Very Register button is visible', async( { page } ) =>
         expect(isElementVisible).toBe(true);
     });
 
-test('Very Register link text', async( { page } ) =>
+test('Verify Register link text', async( { page } ) =>
     {
         await page.goto(appUrl);
         await page.waitForSelector("nav.navbar");
         const registerLink = await page.$('a[href="/register"]');
         const registerLinkText = await registerLink.textContent();
         expect(registerLinkText).toEqual("Register");
+    });
+
+test('Verify user can login', async( { page } ) =>
+    {
+        await page.goto(appUrl);
+        await page.waitForSelector("nav.navbar");
+        
+        const loginLink = await page.$('a[href="/login"]');
+        
+        await loginLink.click();
+
+        await page.fill("#email", "peter@abv.bg");
+        await page.fill("#password", "123456");
+
+        const loginButton = await page.$('xpath=//*[@id="login-form"]/fieldset/input');
+        await loginButton.click();
+
+        const logoutButton = await page.$('#logoutBtn');
+        const logoutButtonText = await logoutButton.textContent();
+
+        expect(logoutButtonText).toEqual("Logout");
     });
