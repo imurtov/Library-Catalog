@@ -40,8 +40,8 @@ jobs:
         - name: Deploy backend
           uses: JorgeLNJunior/render-deploy@v1.4.4
           with:
-            service-id: ${{ secrets.Backend_Key }}
-            api-key: ${{ secrets.Render_API_Key }}
+            service_id: ${{ secrets.Backend_Key }}
+            api_key: ${{ secrets.Render_API_Key }}
             clear_cache: true
             wait_deploy: true
   Deploy_Frontend:
@@ -54,7 +54,7 @@ jobs:
           - name: Deploy frontend
             uses: JorgeLNJunior/render-deploy@v1.4.4
             with:
-              service-id: ${{ secrets.Frontend_Key }}
-              api-key: ${{ secrets.Render_API_Key }}
+              service_id: ${{ secrets.Frontend_Key }}
+              api_key: ${{ secrets.Render_API_Key }}
               clear_cache: true
               wait_deploy: true
