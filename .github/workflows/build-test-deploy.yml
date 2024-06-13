@@ -38,7 +38,7 @@ jobs:
         - name: Checkout V3
           uses: actions/checkout@v4
         - name: Deploy backend
-          uses: JorgeLNJunior/render-deploy-action@v1.4.4
+          uses: JorgeLNJunior/render-deploy@v1.4.4
           with:
             service-id: ${{ secrets.Backend_Key }}
             api-key: ${{ secrets.Render_API_Key }}
@@ -52,7 +52,7 @@ jobs:
           - name: Checkout V3
             uses: actions/checkout@v4
           - name: Deploy frontend
-            uses: JorgeLNJunior/render-deploy-action@v1.4.4
+            uses: JorgeLNJunior/render-deploy@v1.4.4
             with:
               service-id: ${{ secrets.Frontend_Key }}
               api-key: ${{ secrets.Render_API_Key }}
