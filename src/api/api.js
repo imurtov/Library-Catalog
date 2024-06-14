@@ -1,3 +1,5 @@
+import * as config from '../config.js';
+
 export const settings = {
     host: '',
 };
